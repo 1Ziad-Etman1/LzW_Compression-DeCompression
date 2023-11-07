@@ -1,0 +1,31 @@
+/* styles.css */
+
+/* Common styles for both scenes */
+.root {
+    /*-fx-background-image: url("logo.jpg");*/
+    /*-fx-background-size: 620 620;*/
+}
+
+/* Styles for the first scene */
+#first-scene {
+    -fx-alignment: center;
+}
+
+#welcome-label {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+/* Styles for the second scene */
+#second-scene {
+    -fx-alignment: center;
+}
+
+#browse-button {
+    -fx-padding: 40px 0 0 0;
+}
+
+#file-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
