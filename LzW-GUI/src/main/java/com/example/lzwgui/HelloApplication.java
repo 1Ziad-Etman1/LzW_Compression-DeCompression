@@ -1,108 +1,146 @@
 package com.example.lzwgui;
-
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class HelloApplication extends Application {
+    private String selectedFilePath = "";
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) {
-
-        primaryStage.setTitle("JavaFX App");
+        primaryStage.setTitle("LzW Compressor");
 
         // Create the first scene (full screen before the delay)
         VBox firstScene = new VBox();
-        firstScene.setStyle("-fx-background-image: url('logo.jpg'); -fx-background-size: cover; -fx-alignment: center;");
+        firstScene.setStyle(
+                "-fx-background-image: url('logo.jpg'); " +
+                        "-fx-background-size: cover; " +
+                        "-fx-alignment: center;"
+        );
         Label welcomeLabel = new Label("Welcome to LzW Compressor");
-        welcomeLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold; -fx-text-fill: #dad9d9;");
+        welcomeLabel.setStyle(
+                "-fx-font-size: 45px; " +
+                        "-fx-font-weight: bold; " +
+                        "-fx-text-fill: white;"
+        );
+        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreenExitHint(""); // Empty string to hide the exit hint
+
         firstScene.getChildren().add(welcomeLabel);
 
         // Create the second scene (normal screen after the delay)
         VBox secondScene = new VBox();
-        secondScene.setStyle("-fx-background-image: url('logo.jpg'); -fx-background-size: cover; -fx-alignment: center;");
+        secondScene.setStyle(
+                "-fx-background-image: url('logo.jpg'); " +
+                        "-fx-background-size: 1200 675; " +
+                        "-fx-alignment: center;"
+        );
 
         Button browseButton = new Button("Browse");
-        browseButton.setStyle("-fx-padding: 40px 0 0 0;");
+        browseButton.setStyle(
+                "-fx-margin: 45 0 0 47%;" +
+                        "-fx-font-size: 1.2em;" +
+                        "-fx-min-width: 100px;" +
+                        "-fx-min-height: 40px;"
+        );
         browseButton.setAlignment(Pos.CENTER);
-
-        Label fileLabel = new Label("File Name:");
-        fileLabel.setStyle("-fx-text-fill: #d2d2d2; -fx-margin: 40 0 0 0;");
-        Label filepath = new Label();
+        Label fileLabel = new Label("");
+        Label fileLabel2 = new Label("");
+        fileLabel.setStyle(
+                "-fx-text-fill: white; " +
+                        "-fx-margin: 40 0 0 49%;" +
+                        "-fx-font-size: 1.2em;"
+        );
 
         browseButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Select a File");
+
             java.io.File selectedFile = fileChooser.showOpenDialog(primaryStage);
 
             if (selectedFile != null) {
-                String filePath = selectedFile.getAbsolutePath();
-                Path path = Paths.get(filePath);
-
-                fileLabel.setText("File Name: " + path.getFileName());
-                filepath.setText(filePath);
+                selectedFilePath = selectedFile.getAbsolutePath();
+                fileLabel2.setText(selectedFilePath);
+                System.out.println(selectedFilePath);
+                fileLabel.setText(selectedFile.getName());
             }
         });
+        selectedFilePath = fileLabel2.getText();
+        System.out.println(fileLabel2.getText() + "HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+        System.out.println("hello");
 
-        HBox buttons = new HBox(20);
+        HBox buttonsContainer = new HBox();
+        buttonsContainer.setAlignment(Pos.CENTER);
+        buttonsContainer.setStyle(
+                "-fx-margin: 140 0 60 0;"
+        );
 
         Button compressButton = new Button("Compress");
+//        scaleButtonAndLabel(compressButton);
+        compressButton.setStyle(
+                "-fx-margin: 0 0 0 35%;" +
+                        "-fx-min-width: 100px;" +
+                        "-fx-min-height: 40px;"
+        );
         compressButton.setOnAction(event -> {
-            if (!filepath.getText().isEmpty()) {
-                Compressor compressor = new Compressor();
-                File to_compress = new File(filepath.getText());
-                ArrayList<String> arr = new ArrayList<>(to_compress.read_to_compress());
-                StringBuilder text = new StringBuilder();
-                for (String s : arr) {
-                    text.append(s);
-                }
-                String compressedText = compressor.compress(text.toString());
-                ArrayList<String> ByteStrings = new ArrayList<>(to_compress.convert_to_bytes(compressedText));
-                to_compress.string_to_binary_file(ByteStrings, "/path/to/compressed.bin");
-            } else {
-                System.out.println("Please select a file before compressing.");
+            // TODO: Add your compress event here
+            Compressor compressor = new Compressor();
+//        String test = "ABAABABBAABAABAAAABABBBBBBBB";
+            File to_compress = new File(fileLabel2.getText());
+            ArrayList<String> arr = new ArrayList<String>( to_compress.read_to_compress());
+            String test = "";
+            for (String s : arr){
+                test += s;
             }
+            System.out.println("compressed:"+compressor.compress(test));
+            ArrayList<String> ByteStrings = new ArrayList<String>(to_compress.convert_to_bytes(compressor.compress(test)));
+            to_compress.string_to_binary_file(ByteStrings,"/run/media/phantom/New Volume/University/Data Compression/Assignments/Assignment 2/LzW_Compression-DeCompression/LzW-GUI/src/main/resources/compressed.bin");
+
+
         });
 
         Button decompressButton = new Button("Decompress");
+//        scaleButtonAndLabel(decompressButton);
+        decompressButton.setStyle(
+                "-fx-margin: 0 35 0 0;" +
+                        "-fx-min-width: 100px;" +
+                        "-fx-min-height: 40px;"
+        );
         decompressButton.setOnAction(event -> {
-            if (!filepath.getText().isEmpty()) {
-                DeCompressor decompressor = new DeCompressor();
-                File to_decompress = new File(filepath.getText());
-                ArrayList<String> ByteStringss = new ArrayList<>(to_decompress.read_binary_file());
-                StringBuilder binaryText = new StringBuilder();
-                for (String s : ByteStringss) {
-                    binaryText.append(s);
-                }
-                String decompressedText = decompressor.decompress(binaryText.toString());
-                to_decompress.string_to_text_file(decompressedText, "/path/to/decompressed.txt");
-            } else {
-                System.out.println("Please select a file before decompressing.");
+            // TODO: Add your decompress event here
+            DeCompressor decompressor = new DeCompressor();
+            File to_decompress = new File(fileLabel2.getText());
+            ArrayList<String> ByteStringss = new ArrayList<>(to_decompress.read_binary_file());
+            for(String s : ByteStringss){
+                System.out.println(s);
             }
+            String decompressedtext = decompressor.decompress(to_decompress.read_to_decompress());
+            System.out.println("decompressed:"+decompressedtext);
+
+            to_decompress.string_to_text_file(decompressedtext,"/run/media/phantom/New Volume/University/Data Compression/Assignments/Assignment 2/LzW_Compression-DeCompression/LzW-GUI/src/main/resources/decompressed.txt");
+
         });
 
-        buttons.setAlignment(Pos.CENTER);
+        buttonsContainer.getChildren().addAll(compressButton, decompressButton);
 
-        buttons.getChildren().addAll(compressButton, decompressButton);
-        secondScene.getChildren().addAll(browseButton, fileLabel, filepath, buttons);
+        secondScene.getChildren().addAll(browseButton, fileLabel, buttonsContainer);
 
         // Create the scenes
-        Scene scene1 = new Scene(firstScene, 620, 620);
-        Scene scene2 = new Scene(secondScene, 1020, 620);
-
-        // Set the stage to go full screen before the delay
-        primaryStage.setScene(scene1);
-        primaryStage.setFullScreen(true);
+        Scene scene1 = new Scene(firstScene, 1200, 675);
+        Scene scene2 = new Scene(secondScene, 1200, 675);
 
         // Transition to the second scene after a delay of 3500 ms
         PauseTransition delay = new PauseTransition(Duration.millis(3500));
@@ -113,6 +151,16 @@ public class HelloApplication extends Application {
         });
         delay.play();
 
+        primaryStage.setScene(scene1);
         primaryStage.show();
+    }
+
+    private void scaleButtonAndLabel(Button button) {
+        Scale scale = new Scale(1.5, 1.5);
+        button.getTransforms().add(scale);
+        Label label = (Label) button.getGraphic();
+        if (label != null) {
+            label.getTransforms().add(scale);
+        }
     }
 }

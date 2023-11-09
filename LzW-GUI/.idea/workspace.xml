@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="046dc5b3-7a24-4fc1-86e0-85990f085761" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lzwgui/Compressor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lzwgui/DeCompressor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lzwgui/File.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lzwgui/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lzwgui/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/lzwgui/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lzwgui/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lzwgui/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +51,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/run/media/phantom/New Volume/University/Data Compression/Assignments/Assignment 2/LzW_Compression-DeCompression/LzW-GUI/src",
+    "last_opened_file_path": "/run/media/phantom/New Volume/University/Data Compression/Assignments/Assignment 2/LzW_Compression-DeCompression/LzW-GUI/src/main/resources",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -76,6 +62,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -84,7 +71,14 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/lzwgui" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HelloApplication">
+    <configuration name="HelloApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HelloApplication" />
+      <module name="LzW-GUI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.lzwgui.HelloApplication" />
       <module name="LzW-GUI" />
@@ -98,9 +92,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.HelloApplication (1)" />
+      <item itemvalue="Application.HelloApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.HelloApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -113,7 +112,10 @@
       <option name="presentableId" value="Default" />
       <updated>1699376032052</updated>
       <workItem from="1699376033397" duration="2542000" />
-      <workItem from="1699378730721" duration="8741000" />
+      <workItem from="1699378730721" duration="9695000" />
+      <workItem from="1699526396811" duration="59000" />
+      <workItem from="1699526488148" duration="1188000" />
+      <workItem from="1699529774689" duration="6414000" />
     </task>
     <servers />
   </component>
